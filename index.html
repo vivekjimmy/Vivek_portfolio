@@ -4,18 +4,50 @@
 <style>
 /* Layout: left-aligned lab-notebook page. A label rail on the left, content on the right.
    One accent (teal). The hero carries a heatmap strip, the way a computational biologist's figure would. */
+
 :root {
-  --bg: #f2f6f5;
-  --surface: #ffffff;
-  --fg: #0f1f1e;
-  --muted: #4f6462;
-  --rule: #cfdcda;
-  --accent: #0b7a78;
-  --accent-ink: #ffffff;
-  --font-display: "Bricolage Grotesque", "Helvetica Neue", Arial, sans-serif;
-  --font-body: "IBM Plex Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
-  --font-mono: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+  /* Backgrounds */
+  --bg: #F5F8F7;
+  --surface: #FFFFFF;
+  --surface-soft: #E8F3F0;
+
+  /* Typography */
+  --fg: #142522;
+  --muted: #58706B;
+
+  /* Borders */
+  --rule: #DCE6E2;
+
+  /* Brand colours */
+  --accent: #087E75;
+  --accent-hover: #06665F;
+  --accent-ink: #FFFFFF;
+
+  /* Typography */
+  --font-display: "Bricolage Grotesque",
+    "Helvetica Neue", Arial, sans-serif;
+
+  --font-body: "IBM Plex Sans",
+    system-ui, -apple-system, "Segoe UI", sans-serif;
+
+  --font-mono: "IBM Plex Mono",
+    ui-monospace, "SFMono-Regular", Menlo, monospace;
+
+  /* Additional UI colours */
+  --success: #27845B;
+  --warning: #B7791F;
+  --link: #087E75;
+
+  /* Shadows */
+  --shadow-sm: 0 2px 8px rgba(20, 37, 34, 0.05);
+  --shadow-md: 0 8px 24px rgba(20, 37, 34, 0.08);
+
+  /* Border radius */
+  --radius-sm: 6px;
+  --radius-md: 12px;
+  --radius-lg: 18px;
 }
+
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
     --bg: #0b1514; --surface: #122120; --fg: #e6f0ee; --muted: #94aaa7; --rule: #26403e;
