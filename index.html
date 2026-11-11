@@ -316,7 +316,7 @@ footer { border-top: 1px solid var(--rule); padding-top: 20px; font-family: var(
       html += '<i style="opacity:' + o.toFixed(2) + '"></i>';
     }
   }
-  heat.innerHTML = html;
+  if (heat) heat.innerHTML = html;
   Array.prototype.forEach.call(document.querySelectorAll(".copy"), function (b) {
     b.addEventListener("click", function () {
       var text = b.getAttribute("data-copy");
