@@ -1,0 +1,252 @@
+<title>Vivek Kumar Portfolio</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=IBM+Plex+Sans:wght@400;500&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: left-aligned lab-notebook page. A label rail on the left, content on the right.
+   One accent (teal). The hero carries a heatmap strip, the way a computational biologist's figure would. */
+:root {
+  --bg: #f2f6f5;
+  --surface: #ffffff;
+  --fg: #0f1f1e;
+  --muted: #4f6462;
+  --rule: #cfdcda;
+  --accent: #0b7a78;
+  --accent-ink: #ffffff;
+  --font-display: "Bricolage Grotesque", "Helvetica Neue", Arial, sans-serif;
+  --font-body: "IBM Plex Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0b1514; --surface: #122120; --fg: #e6f0ee; --muted: #94aaa7; --rule: #26403e;
+    --accent: #3fc1bd; --accent-ink: #062321; color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0b1514; --surface: #122120; --fg: #e6f0ee; --muted: #94aaa7; --rule: #26403e;
+  --accent: #3fc1bd; --accent-ink: #062321; color-scheme: dark;
+}
+* { box-sizing: border-box; }
+body {
+  background: var(--bg); color: var(--fg);
+  font-family: var(--font-body); font-size: 16px; line-height: 1.6;
+  padding-block: 0 48px;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+}
+.wrap { max-width: 62rem; margin: 0 auto; }
+a { color: var(--accent); text-underline-offset: 3px; }
+a:focus-visible, button:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+
+header.top { display: flex; flex-wrap: wrap; gap: 8px 24px; justify-content: space-between; align-items: baseline; padding-block: 20px; border-bottom: 1px solid var(--rule); }
+.mark { font-family: var(--font-mono); font-size: 13px; letter-spacing: .04em; }
+nav { display: flex; flex-wrap: wrap; gap: 4px 20px; font-family: var(--font-mono); font-size: 13px; }
+nav a { color: var(--muted); text-decoration: none; }
+nav a:hover { color: var(--accent); }
+
+.hero { padding-block: 56px 40px; }
+.hero .eyebrow { font-family: var(--font-mono); font-size: 13px; color: var(--accent); letter-spacing: .06em; text-transform: uppercase; margin: 0 0 16px; }
+h1 { font-family: var(--font-display); font-weight: 700; font-size: clamp(2.6rem, 8vw, 5rem); line-height: 1; letter-spacing: -.02em; margin: 0 0 20px; text-wrap: balance; }
+.lede { font-size: clamp(1.1rem, 2.4vw, 1.35rem); max-width: 40rem; margin: 0 0 28px; color: var(--fg); }
+.actions { display: flex; flex-wrap: wrap; gap: 12px; }
+.btn { font-family: var(--font-mono); font-size: 14px; padding: 10px 16px; border: 1px solid var(--accent); text-decoration: none; border-radius: 2px; display: inline-block; background: transparent; color: var(--accent); cursor: pointer; }
+.btn.primary { background: var(--accent); color: var(--accent-ink); }
+.btn:hover { filter: brightness(1.08); }
+
+.fig { margin-top: 40px; }
+.heat { display: grid; grid-template-columns: repeat(32, 1fr); gap: 2px; }
+.heat i { aspect-ratio: 1; background: var(--accent); border-radius: 1px; display: block; }
+.fig figcaption { font-family: var(--font-mono); font-size: 12px; color: var(--muted); margin-top: 8px; }
+
+section { display: grid; grid-template-columns: 11rem minmax(0, 1fr); gap: 16px 40px; padding-block: 40px; border-top: 1px solid var(--rule); }
+section > h2 { font-family: var(--font-mono); font-weight: 500; font-size: 13px; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); margin: 6px 0 0; }
+.body { min-width: 0; max-width: 42rem; }
+.body p { margin: 0 0 16px; }
+
+.entry { padding-bottom: 28px; }
+.entry:last-child { padding-bottom: 0; }
+.entry h3 { font-family: var(--font-display); font-weight: 500; font-size: 1.3rem; line-height: 1.25; margin: 0 0 4px; text-wrap: balance; }
+.meta { font-family: var(--font-mono); font-size: 13px; color: var(--muted); margin: 0 0 8px; }
+.entry p { margin: 0 0 8px; }
+.tags { display: flex; flex-wrap: wrap; gap: 6px; padding: 0; margin: 8px 0 0; list-style: none; }
+.tags li { font-family: var(--font-mono); font-size: 12px; padding: 2px 8px; border: 1px solid var(--rule); border-radius: 2px; background: var(--surface); }
+
+dl.skills { margin: 0; display: grid; gap: 20px; }
+dl.skills dt { font-family: var(--font-mono); font-size: 13px; color: var(--accent); margin-bottom: 4px; }
+dl.skills dd { margin: 0; }
+
+.edu { display: grid; gap: 16px; margin: 0; padding: 0; list-style: none; }
+.edu li { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 4px 16px; }
+.edu .score { font-family: var(--font-mono); font-size: 14px; text-align: right; }
+.edu b { font-weight: 500; }
+.edu span.sub { color: var(--muted); display: block; font-size: 14px; }
+
+ul.plain { margin: 0; padding-left: 1.1em; }
+ul.plain li { margin-bottom: 6px; }
+
+.contact-row { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 12px; margin-bottom: 12px; }
+.contact-row code { font-family: var(--font-mono); font-size: 15px; user-select: all; overflow-wrap: anywhere; }
+.copy { font-family: var(--font-mono); font-size: 12px; padding: 4px 10px; border: 1px solid var(--rule); background: var(--surface); color: var(--fg); border-radius: 2px; cursor: pointer; }
+
+footer { border-top: 1px solid var(--rule); padding-top: 20px; font-family: var(--font-mono); font-size: 12px; color: var(--muted); }
+
+@media (max-width: 720px) {
+  section { grid-template-columns: minmax(0, 1fr); gap: 12px; padding-block: 32px; }
+  section > h2 { margin-top: 0; }
+  .hero { padding-block: 40px 32px; }
+  .heat { grid-template-columns: repeat(20, 1fr); }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .btn, nav a { transition: color .15s, filter .15s; }
+}
+</style>
+
+<div class="wrap">
+  <header class="top">
+    <span class="mark">vivek kumar / computational biology</span>
+    <nav aria-label="Sections">
+      <a href="#about">About</a>
+      <a href="#research">Research</a>
+      <a href="#skills">Skills</a>
+      <a href="#education">Education</a>
+      <a href="#service">Service</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <main>
+    <div class="hero">
+      <p class="eyebrow">Integrated MSc, Systems and Computational Biology</p>
+      <h1>Vivek Kumar</h1>
+      <p class="lede">I combine genomic analysis, machine learning and bench work to study complex diseases, especially cancer. I am applying for MSc and PhD positions abroad.</p>
+      <div class="actions">
+        <a class="btn primary" href="#contact">Get in touch</a>
+        <a class="btn" href="https://github.com/vivekjimmy">GitHub</a>
+      </div>
+      <figure class="fig" aria-hidden="true">
+        <div class="heat" id="heat"></div>
+        <figcaption>Fig. 0. Illustrative expression matrix, not real data.</figcaption>
+      </figure>
+    </div>
+
+    <section id="about">
+      <h2>About</h2>
+      <div class="body">
+        <p>I am a fifth-year Integrated MSc student at the University of Hyderabad. My work covers genomics, transcriptomics, flux balance analysis and machine learning for biological data, alongside hands-on experience in molecular biology, protein expression and microbial culture.</p>
+        <p>I want to connect computational analysis with experimental validation so that predictions about complex systems, such as cancer, can be tested in the lab.</p>
+        <p><b>Research interests:</b> cancer genomics, systems biology, bioinformatics and computational biology, machine learning in biomedical research, mathematical modelling of biological systems.</p>
+      </div>
+    </section>
+
+    <section id="research">
+      <h2>Research</h2>
+      <div class="body">
+        <div class="entry">
+          <h3>Flux balance analysis of <em>Corynebacterium</em> for hyaluronic acid</h3>
+          <p class="meta">Internship project · June to July 2025</p>
+          <p>Used flux balance analysis to identify genes to knock out or knock in to raise titers of glycosylated hyaluronic acid.</p>
+          <ul class="tags"><li>Flux balance analysis</li><li>Metabolic engineering</li><li>MATLAB</li></ul>
+        </div>
+        <div class="entry">
+          <h3>Genome and transcriptome analysis of <em>Arabidopsis thaliana</em></h3>
+          <p class="meta">Project work · 6 months</p>
+          <p>Analysed whole genome sequencing and transcriptome data, including NGS processing, genome annotation and functional enrichment.</p>
+          <ul class="tags"><li>NGS</li><li>Genome annotation</li><li>Functional enrichment</li><li>R</li></ul>
+        </div>
+        <div class="entry">
+          <h3>Expression and purification of Phusion and Cas9 in <em>E. coli</em></h3>
+          <p class="meta">Internship project · 27 May to 20 July 2024</p>
+          <p>Expressed and purified Phusion polymerase and Cas9 using recombinant expression, chromatography and SDS-PAGE.</p>
+          <ul class="tags"><li>Protein expression</li><li>Chromatography</li><li>SDS-PAGE</li></ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="skills">
+      <h2>Skills</h2>
+      <div class="body">
+        <dl class="skills">
+          <div><dt>Programming</dt><dd>Python, R (ggplot2, PCA, heatmaps), C, Linux</dd></div>
+          <div><dt>Software</dt><dd>MATLAB, AutoDock, Outflux Bin</dd></div>
+          <div><dt>Computational</dt><dd>Genomic and transcriptomic analysis, sequence analysis, genome annotation, machine learning for biological data, mathematical modelling, proteogenomics, cancer genomics datasets</dd></div>
+          <div><dt>Molecular biology</dt><dd>DNA and RNA isolation, PCR, RT-PCR, agarose gel electrophoresis, SDS-PAGE, Western blot</dd></div>
+          <div><dt>Protein and analytical</dt><dd>Protein quantification, enzyme assays, ion exchange and column chromatography, surface plasmon resonance, spectrophotometry, thin layer chromatography</dd></div>
+          <div><dt>Cell and microbial</dt><dd>Culturing, media preparation, antimicrobial susceptibility testing, flask-level fermentation, immunofluorescence, microscopy</dd></div>
+        </dl>
+      </div>
+    </section>
+
+    <section id="education">
+      <h2>Education</h2>
+      <div class="body">
+        <ul class="edu">
+          <li><div><b>University of Hyderabad</b><span class="sub">Integrated MSc, Systems and Computational Biology · 2022 to 2027 (expected)</span></div><div class="score">CGPA 7.8 / 10</div></li>
+          <li><div><b>College of Commerce, Arts &amp; Science, Patna</b><span class="sub">Class 12, Physics, Chemistry, Maths, Biology · 2019 to 2021</span></div><div class="score">81%</div></li>
+          <li><div><b>High School Chandinowan, Bihar</b><span class="sub">Class 10 · 2017 to 2019</span></div><div class="score">88.6%</div></li>
+        </ul>
+        <h3 class="meta" style="margin-top:28px">Courses and workshops</h3>
+        <ul class="plain">
+          <li>NPTEL: Computational Genomics (IISER Bhopal), Biological Data Analysis using R (IIT Kharagpur), Proteogenomics (IIT Bombay), RNA Biology (IISER Mohali), Entrepreneurship (IIT Madras), Healthcare Entrepreneurship (IIT Delhi)</li>
+          <li>Workshops on NGS in research (Jan 2025), molecular docking (Dec 2024), genome-wide association studies (Nov 2024) and microbiome and genome analysis (July 2023)</li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="service">
+      <h2>Service</h2>
+      <div class="body">
+        <div class="entry">
+          <h3>Sit with Invisible India</h3>
+          <p class="meta">Co-founder · 2023 to present</p>
+          <p>Every weekend we teach children of migrant construction workers near the campus basic literacy, numeracy, hygiene, and tobacco and drug awareness. More than 500 children have learned to read and write.</p>
+        </div>
+        <ul class="plain">
+          <li>Coordinator, Joint Student Club, Center for Integrated Studies, University of Hyderabad (2023 to 2024)</li>
+          <li>Member, ENTROPY science club, School of Life Sciences (2024 to present)</li>
+          <li>Member, Internship and Opportunities Cell, Technoclub, University of Hyderabad (2023 to present)</li>
+          <li>Campus Ambassador, Guesss India programme, IIT Mandi (Sep to Dec 2025)</li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="contact">
+      <h2>Contact</h2>
+      <div class="body">
+        <p>I am happy to talk about MSc and PhD opportunities, collaborations and research projects.</p>
+        <div class="contact-row"><code>ariyanvivek@gmail.com</code><button class="copy" type="button" data-copy="ariyanvivek@gmail.com">Copy</button></div>
+        <div class="contact-row"><code>22ilmg31@uohyd.ac.in</code><button class="copy" type="button" data-copy="22ilmg31@uohyd.ac.in">Copy</button></div>
+        <p style="margin-top:16px"><a href="https://github.com/vivekjimmy">github.com/vivekjimmy</a></p>
+      </div>
+    </section>
+  </main>
+
+  <footer>University of Hyderabad, India</footer>
+</div>
+
+<script>
+(function () {
+  var heat = document.getElementById("heat");
+  var rows = 5, cols = 32, html = "";
+  for (var r = 0; r < rows; r++) {
+    for (var c = 0; c < cols; c++) {
+      var v = Math.sin(c * 0.55 + r * 1.7) * Math.cos(c * 0.21 - r * 0.9);
+      var o = 0.12 + 0.88 * Math.pow((v + 1) / 2, 1.6);
+      html += '<i style="opacity:' + o.toFixed(2) + '"></i>';
+    }
+  }
+  heat.innerHTML = html;
+  Array.prototype.forEach.call(document.querySelectorAll(".copy"), function (b) {
+    b.addEventListener("click", function () {
+      var text = b.getAttribute("data-copy");
+      var done = function () { b.textContent = "Copied"; setTimeout(function () { b.textContent = "Copy"; }, 1500); };
+      var fallback = function () {
+        var code = b.previousElementSibling;
+        var range = document.createRange(); range.selectNodeContents(code);
+        var sel = window.getSelection(); sel.removeAllRanges(); sel.addRange(range);
+        b.textContent = "Selected";
+      };
+      try { navigator.clipboard.writeText(text).then(done, fallback); } catch (e) { fallback(); }
+    });
+  });
+})();
+</script>
