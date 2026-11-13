@@ -142,7 +142,18 @@ footer { border-top: 1px solid var(--rule); padding-top: 20px; font-family: var(
 .social a:hover { border-color: var(--accent); }
 .social svg { width: 22px; height: 22px; fill: currentColor; }
 header.top nav { margin-left: auto; justify-content: flex-end; }
+.hero { display: grid; grid-template-columns: minmax(0, 1fr) 280px; gap: 32px 48px; align-items: center; }
+.portrait { width: 100%; aspect-ratio: 4 / 5; object-fit: cover; display: block; border-radius: 2px; border: 1px solid var(--rule); }
+@media (max-width: 720px) { .hero { grid-template-columns: minmax(0, 1fr); } .portrait { max-width: 220px; } }
 
+.slider { margin-top: 4px; }
+.track { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: thin; }
+.slide { flex: 0 0 100%; scroll-snap-align: start; margin: 0; }
+.slide img { width: 100%; aspect-ratio: 16 / 10; object-fit: cover; display: block; border-radius: 2px; }
+.slide figcaption { font-family: var(--font-mono); font-size: 13px; color: var(--muted); margin-top: 8px; }
+.slider-btns { display: flex; gap: 8px; margin-top: 12px; }
+.slider-btns button { font-family: var(--font-mono); font-size: 13px; padding: 6px 14px; border: 1px solid var(--rule); background: var(--surface); color: var(--fg); border-radius: 2px; cursor: pointer; }
+.slider-btns button:hover { border-color: var(--accent); color: var(--accent); }
 
    
 </style>
@@ -156,7 +167,7 @@ header.top nav { margin-left: auto; justify-content: flex-end; }
          <a href="#research">Research</a>
          <a href="#skills">Skills</a>
          <a href="#education">Education</a>
-         <a href="#achivement">Achivement</a>
+         <a href="#achievements">Achievements</a>
          <a href="#service">Service</a>
          <a href="#contact">Contact</a>
        </nav>
@@ -164,23 +175,17 @@ header.top nav { margin-left: auto; justify-content: flex-end; }
 
  <main>
       <div class="hero">
-        <div class="hero-text">
-          <p class="eyebrow">Integrated MSc, Systems and Computational Biology</p>
-          <h1>Vivek Kumar</h1>
-          <p class="lede">I combine genomic analysis, machine learning and bench work to study complex diseases, especially cancer. I am applying for MSc and PhD positions abroad.</p>
-          <div class="actions">
-            <a class="btn primary" href="#contact">Get in touch</a>
-            <a class="btn" href="https://github.com/vivekjimmy">GitHub</a>
-          </div>
+  <div class="hero-text">
+    <p class="eyebrow">Integrated MSc, Systems and Computational Biology</p>
+    <h1>Vivek Kumar</h1>
+    <p class="lede">I combine genomic analysis, machine learning and bench work to study complex diseases, especially cancer. I am applying for MSc and PhD positions abroad.</p>
+    <div class="actions">
+      <a class="btn primary" href="#contact">Get in touch</a>
+      <a class="btn" href="https://github.com/vivekjimmy">GitHub</a>
+    </div>
   </div>
-  <img class="portrait" src="vivek_pjoto.jpg" alt="Portrait of Vivek Kumar">
+  <img class="portrait" src="vivek_photo.jpg" alt="Portrait of Vivek Kumar">
 </div>
-      <div class="gallery">
-        <figure><img src="images/photo1.png" alt="Vivek Kumar at work" loading="lazy" onerror="this.parentElement.hidden=true"></figure>
-        <figure><img src="images/photo2.png" alt="Vivek Kumar in the lab" loading="lazy" onerror="this.parentElement.hidden=true"></figure>
-        <figure><img src="images/photo3.png" alt="Vivek Kumar at an event" loading="lazy" onerror="this.parentElement.hidden=true"></figure>
-      </div>
-       </div>
 
     <section id="about">
       <h2>About</h2>
@@ -251,27 +256,22 @@ header.top nav { margin-left: auto; justify-content: flex-end; }
         <div class="entry">
           <h3>Vigyanotsav 2023</h3>
           <p class="meta">University of Hyderabad · 2023</p>
-          <p>Demonstrated a simple DNA isolation kit to visitors at the university science festival.</p>
-        </div>
-        <!--
-        To add another achievement, copy the whole block below, remove the comment marks and edit it.
-        To add a photo, upload it to an images folder and use the img line.
-
-        <div class="entry">
-          <h3>Your achievement title</h3>
-          <p class="meta">Event or place · Month Year</p>
-          <p>One or two lines about it.</p>
-          <img src="images/award1.jpg" alt="Describe the photo">
-        </div>
-        -->
+           <section id="achievements">
+  <h2>Achievements</h2>
+  <div class="body">
+    <div class="slider">
+      <div class="track" id="track">
+        <figure class="slide"><img src="photo1.png" alt="Achievement photo 1" onerror="this.parentElement.hidden=true"><figcaption>Achievement title · Event · Year</figcaption></figure>
+        <figure class="slide"><img src="photo2.png" alt="Achievement photo 2" onerror="this.parentElement.hidden=true"><figcaption>Achievement title · Event · Year</figcaption></figure>
+        <figure class="slide"><img src="photo3.png" alt="Achievement photo 3" onerror="this.parentElement.hidden=true"><figcaption>Achievement title · Event · Year</figcaption></figure>
       </div>
-    </section>
-
-    <section id="service">
-      <h2>Service</h2>
-      <div class="body">
-        <div class="entry">
-          <h3>Sit with Invisible India</h3>
+      <div class="slider-btns">
+        <button type="button" id="prev">Previous</button>
+        <button type="button" id="next">Next</button>
+      </div>
+    </div>
+  </div>
+</section>
           <p class="meta">Co-founder · 2023 to present</p>
           <p>Every weekend we teach children of migrant construction workers near the campus basic literacy, numeracy, hygiene, and tobacco and drug awareness. More than 500 children have learned to read and write.</p>
         </div>
@@ -358,6 +358,13 @@ header.top nav { margin-left: auto; justify-content: flex-end; }
     if (!reduce) requestAnimationFrame(draw);
   }
   draw();
+})();
+   (function () {
+  var track = document.getElementById("track");
+  if (!track) return;
+  function go(d) { track.scrollBy({ left: d * track.clientWidth, behavior: "smooth" }); }
+  document.getElementById("prev").addEventListener("click", function () { go(-1); });
+  document.getElementById("next").addEventListener("click", function () { go(1); });
 })();
 </script>
 
