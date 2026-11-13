@@ -137,7 +137,7 @@ footer { border-top: 1px solid var(--rule); padding-top: 20px; font-family: var(
 @media (max-width: 720px) { .gallery { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
    #bg { position: fixed; inset: 0; width: 100%; height: 100%; z-index: -1; pointer-events: none; opacity: .35; }
    
-   .social { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 16px; }
+.social { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 16px; }
 .social a { width: 44px; height: 44px; display: grid; place-items: center; border: 1px solid var(--rule); border-radius: 2px; background: var(--surface); color: var(--accent); }
 .social a:hover { border-color: var(--accent); }
 .social svg { width: 22px; height: 22px; fill: currentColor; }
@@ -150,9 +150,10 @@ header.top nav { margin-left: auto; justify-content: flex-end; }
 .slider { margin-top: 4px; }
 .track { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: thin; }
 .slide { flex: 0 0 100%; scroll-snap-align: start; margin: 0; }
-.slide img, .slide video, .slide iframe { width: 100%; aspect-ratio: 16 / 9; display: block; border: 0; border-radius: 2px; background: #000; }
-.slide img { object-fit: cover; object-position: center 0%; }
-.slide video { object-fit: contain; }
+.slide img, .slide video, .slide iframe { width: 100%; aspect-ratio: 16 / 9; display: block; border: 0; border-radius: 2px; }
+.slide img { object-fit: contain; background: var(--surface); }
+.slide video { object-fit: contain; background: #000; }
+.slide iframe { background: #000; }
 .slide figcaption { font-family: var(--font-mono); font-size: 13px; color: var(--muted); margin-top: 8px; }
 .slider-btns { display: flex; gap: 8px; margin-top: 12px; }
 .slider-btns button { font-family: var(--font-mono); font-size: 13px; padding: 6px 14px; border: 1px solid var(--rule); background: var(--surface); color: var(--fg); border-radius: 2px; cursor: pointer; }
