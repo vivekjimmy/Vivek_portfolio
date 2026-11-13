@@ -146,14 +146,18 @@ header.top nav { margin-left: auto; justify-content: flex-end; }
 .portrait { width: 100%; aspect-ratio: 4 / 5; object-fit: cover; display: block; border-radius: 2px; border: 1px solid var(--rule); }
 @media (max-width: 720px) { .hero { grid-template-columns: minmax(0, 1fr); } .portrait { max-width: 220px; } }
 
+#achievements .body { max-width: none; }
 .slider { margin-top: 4px; }
 .track { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: thin; }
 .slide { flex: 0 0 100%; scroll-snap-align: start; margin: 0; }
-.slide img { width: 100%; aspect-ratio: 16 / 10; object-fit: cover; display: block; border-radius: 2px; }
+.slide img, .slide video, .slide iframe { width: 100%; aspect-ratio: 16 / 9; display: block; border: 0; border-radius: 2px; background: #000; }
+.slide img { object-fit: cover; }
+.slide video { object-fit: contain; }
 .slide figcaption { font-family: var(--font-mono); font-size: 13px; color: var(--muted); margin-top: 8px; }
 .slider-btns { display: flex; gap: 8px; margin-top: 12px; }
 .slider-btns button { font-family: var(--font-mono); font-size: 13px; padding: 6px 14px; border: 1px solid var(--rule); background: var(--surface); color: var(--fg); border-radius: 2px; cursor: pointer; }
 .slider-btns button:hover { border-color: var(--accent); color: var(--accent); }
+
 
    
 </style>
@@ -249,40 +253,47 @@ header.top nav { margin-left: auto; justify-content: flex-end; }
         </ul>
       </div>
     </section>
-
+    
     <section id="achievements">
-      <h2>Achievements</h2>
-      <div class="body">
-        <div class="entry">
-          <h3>Vigyanotsav 2023</h3>
-          <p class="meta">University of Hyderabad · 2023</p>
-           <section id="achievements">
-  <h2>Achievements</h2>
-  <div class="body">
-    <div class="slider">
-      <div class="track" id="track">
-        <figure class="slide"><img src="photo1.png" alt="Achievement photo 1" onerror="this.parentElement.hidden=true"><figcaption>Achievement title · Event · Year</figcaption></figure>
-        <figure class="slide"><img src="photo2.png" alt="Achievement photo 2" onerror="this.parentElement.hidden=true"><figcaption>Achievement title · Event · Year</figcaption></figure>
-        <figure class="slide"><img src="photo3.png" alt="Achievement photo 3" onerror="this.parentElement.hidden=true"><figcaption>Achievement title · Event · Year</figcaption></figure>
-      </div>
-      <div class="slider-btns">
-        <button type="button" id="prev">Previous</button>
-        <button type="button" id="next">Next</button>
+     <h2>Achievements</h2>
+     <div class="body">
+       <div class="slider" id="slider">
+         <div class="track" id="track">
+           <!-- Photo slide -->
+           <figure class="slide"><img src="photo1.png" alt="Achievement photo" onerror="this.parentElement.hidden=true"><figcaption>Achievement title · Event · Year</figcaption></figure>
+           <figure class="slide"><img src="photo2.png" alt="Achievement photo" onerror="this.parentElement.hidden=true"><figcaption>Achievement title · Event · Year</figcaption></figure>
+           <figure class="slide"><img src="photo3.png" alt="Achievement photo" onerror="this.parentElement.hidden=true"><figcaption>Achievement title · Event · Year</figcaption></figure>
+           <!-- Video file slide (small files, under about 25 MB) 
+           <figure class="slide"><video src="video1.mp4" controls preload="metadata" playsinline></video><figcaption>Achievement title · Event · Year</figcaption></figure>
+           <!-- YouTube slide: replace VIDEO_ID with the part after v= in the YouTube link
+           <figure class="slide"><iframe src="https://www.youtube.com/embed/VIDEO_ID" title="Achievement video" allowfullscreen loading="lazy"></iframe><figcaption>Achievement title · Event · Year</figcaption></figure> -->
+                                                                                                          
+         </div>
+         <div class="slider-btns">
+           <button type="button" id="prev">Previous</button>
+           <button type="button" id="next">Next</button>
       </div>
     </div>
   </div>
 </section>
-          <p class="meta">Co-founder · 2023 to present</p>
-          <p>Every weekend we teach children of migrant construction workers near the campus basic literacy, numeracy, hygiene, and tobacco and drug awareness. More than 500 children have learned to read and write.</p>
-        </div>
-        <ul class="plain">
-          <li>Coordinator, Joint Student Club, Center for Integrated Studies, University of Hyderabad (2023 to 2024)</li>
-          <li>Member, ENTROPY science club, School of Life Sciences (2024 to present)</li>
-          <li>Member, Internship and Opportunities Cell, Technoclub, University of Hyderabad (2023 to present)</li>
-          <li>Campus Ambassador, Guesss India programme, IIT Mandi (Sep to Dec 2025)</li>
-        </ul>
-      </div>
-    </section>
+<!-- Section change -->
+           
+<section id="service">
+  <h2>Service</h2>
+  <div class="body">
+    <div class="entry">
+      <h3>Sit with Invisible India</h3>
+      <p class="meta">Co-founder · 2023 to present</p>
+      <p>Every weekend we teach children of migrant construction workers near the campus basic literacy, numeracy, hygiene, and tobacco and drug awareness. More than 500 children have learned to read and write.</p>
+    </div>
+    <ul class="plain">
+      <li>Coordinator, Joint Student Club, Center for Integrated Studies, University of Hyderabad (2023 to 2024)</li>
+      <li>Member, ENTROPY science club, School of Life Sciences (2024 to present)</li>
+      <li>Member, Internship and Opportunities Cell, Technoclub, University of Hyderabad (2023 to present)</li>
+      <li>Campus Ambassador, Guesss India programme, IIT Mandi (Sep to Dec 2025)</li>
+    </ul>
+  </div>
+</section>
 
     <section id="contact">
       <h2>Contact</h2>
@@ -295,18 +306,15 @@ header.top nav { margin-left: auto; justify-content: flex-end; }
           <a href="https://github.com/vivekjimmy" aria-label="GitHub profile" title="GitHub">
             <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
           </a>
-          <!--
-          LinkedIn icon: remove these comment marks and replace YOUR-LINKEDIN-NAME with the end of your LinkedIn address.
-          <a href="https://www.linkedin.com/in/YOUR-LINKEDIN-NAME" aria-label="LinkedIn profile" title="LinkedIn">
+          <a href="www.linkedin.com/in/bioentrepreneurcompbiology" aria-label="LinkedIn profile" title="LinkedIn">
             <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
           </a>
-          -->
         </div>
       </div>
     </section>
+           
   </main>
-
-  <footer>University of Hyderabad, India</footer>
+  <footer>University of Hyderabad, Telangana 500046, India</footer>
 </div>
 
 <script>
@@ -359,12 +367,41 @@ header.top nav { margin-left: auto; justify-content: flex-end; }
   }
   draw();
 })();
-   (function () {
+(function () {
   var track = document.getElementById("track");
-  if (!track) return;
-  function go(d) { track.scrollBy({ left: d * track.clientWidth, behavior: "smooth" }); }
-  document.getElementById("prev").addEventListener("click", function () { go(-1); });
-  document.getElementById("next").addEventListener("click", function () { go(1); });
+  var box = document.getElementById("slider");
+  if (!track || !box) return;
+  var held = false;
+  var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  function slides() { return Array.prototype.filter.call(track.querySelectorAll(".slide"), function (s) { return !s.hidden; }); }
+  function current() { return Math.round(track.scrollLeft / track.clientWidth); }
+  function show(i) {
+    var n = slides().length;
+    if (!n) return;
+    i = (i + n) % n;
+    track.scrollTo({ left: i * track.clientWidth, behavior: "smooth" });
+  }
+
+  document.getElementById("prev").addEventListener("click", function () { show(current() - 1); });
+  document.getElementById("next").addEventListener("click", function () { show(current() + 1); });
+
+  box.addEventListener("mouseenter", function () { held = true; });
+  box.addEventListener("mouseleave", function () { held = false; });
+  track.addEventListener("play", function () { held = true; }, true);
+  track.addEventListener("pause", function () { held = false; }, true);
+  track.addEventListener("ended", function () { held = false; }, true);
+
+  if ("IntersectionObserver" in window) {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (!e.isIntersecting) { var v = e.target.querySelector("video"); if (v) v.pause(); }
+      });
+    }, { root: track, threshold: 0.6 });
+    Array.prototype.forEach.call(track.querySelectorAll(".slide"), function (s) { io.observe(s); });
+  }
+
+  if (!reduce) setInterval(function () { if (!held) show(current() + 1); }, 10000);
 })();
 </script>
 
