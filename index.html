@@ -151,7 +151,7 @@ header.top nav { margin-left: auto; justify-content: flex-end; }
 .track { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: thin; }
 .slide { flex: 0 0 100%; scroll-snap-align: start; margin: 0; }
 .slide img, .slide video, .slide iframe { width: 100%; aspect-ratio: 16 / 9; display: block; border: 0; border-radius: 2px; background: #000; }
-.slide img { object-fit: cover; }
+.slide img { object-fit: cover; object-position: center 0%; }
 .slide video { object-fit: contain; }
 .slide figcaption { font-family: var(--font-mono); font-size: 13px; color: var(--muted); margin-top: 8px; }
 .slider-btns { display: flex; gap: 8px; margin-top: 12px; }
@@ -186,6 +186,7 @@ header.top nav { margin-left: auto; justify-content: flex-end; }
     <div class="actions">
       <a class="btn primary" href="#contact">Get in touch</a>
       <a class="btn" href="https://github.com/vivekjimmy">GitHub</a>
+      <a class="btn" href="Vivek_Kumar_CV.pdf" download>Download CV</a>
     </div>
   </div>
   <img class="portrait" src="vivek_photo.jpg" alt="Portrait of Vivek Kumar">
@@ -257,6 +258,19 @@ header.top nav { margin-left: auto; justify-content: flex-end; }
     <section id="achievements">
      <h2>Achievements</h2>
      <div class="body">
+        <!--
+      <div class="entry">
+        <h3>Your achievement title</h3>
+        <p class="meta">Event or organisation · Month Year</p>
+        <p>Write one or two lines about what you did and what came of it.</p>
+      </div>
+      
+      <div class="entry">
+        <h3>Second achievement title</h3>
+        <p class="meta">Event or organisation · Month Year</p>
+        <p>One or two lines.</p>
+      </div>
+      -->
        <div class="slider" id="slider">
          <div class="track" id="track">
            <!-- Photo slide -->
